@@ -1,36 +1,74 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Helios-Vektor • AI Residential Energy & HVAC Optimization Studio
 
-## Getting Started
+> Professional B2B SaaS platform for geospatial energy optimization, AI-driven photovoltaic (PV) solar panel placement, multi-split HVAC siting, aerodynamic wind integration, and thermodynamic building simulation.
 
-First, run the development server:
+---
 
+## ⚡ Features & Capabilities
+
+- **Interactive 2D Multi-Layer Workstation**:
+  - **Cadastral & Floorplan Layers**: Precision $0.25\text{ m}$ coordinate resolution grid mapping walls, doors, windows, and surrounding obstacles (trees, adjacent structures).
+  - **Solar Siting & Irradiance Analysis**: Roof PV modules (20 panels) & ground array (6 panels) yielding an estimated **$17,256\text{ kWh/yr}$**.
+  - **HVAC & Heat Pump Siting**: Indoor ceiling multi-splits (`AC1`, `AC2`, `AC3`), outdoor condenser unit, and a **$29\text{ m}$ refrigerant pipe routing network**.
+  - **Thermal Efficiency Diffusion**: Magma/Inferno plume mapping convective airflow and cooling/heating propagation within interior rooms.
+  - **Environmental & Climate Vectors**: Real-time visualization of dominant wind vectors ($301^\circ$) and seasonal solar azimuth & elevation ($181^\circ / 49^\circ$).
+  - **Dynamic Shadow Projection**: Real-time solar trajectory slider ($06:00$ to $20:00$) simulating seasonal solstice and equinox shadow lengths.
+
+- **Design System & Engineering**:
+  - Built with **Next.js (App Router)**, **React 19**, **Tailwind CSS v4**, and **TypeScript**.
+  - W3C DTCG-compliant Design Tokens (`tokens/tokens.json`) with topo-energy heatmap palette (Emerald/Mint solar, Cyan HVAC, Dark slate GIS base).
+  - High-density B2B telemetry HUD with real-time KPI inspection, acoustic noise tolerance sliders, and compliance reports.
+  - BIM (IFC 4.0) and technical CAD (DXF/PDF) export readiness.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Framework**: [Next.js](https://nextjs.org) (Turbopack, App Router)
+- **UI & Styling**: [Tailwind CSS v4](https://tailwindcss.com) + Custom Design Tokens
+- **Icons & Graphics**: Pure SVG Vector Engine (Hardware-accelerated)
+- **Language**: TypeScript
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/ggkmkomega/solar-energy-optimization.git
+cd solar-energy-optimization
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Install dependencies
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3. Run the development server
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Open [http://localhost:3000](http://localhost:3000) with your browser to explore the interactive studio.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 📁 Project Architecture
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+├── app/
+│   ├── globals.css         # Tailwind v4 theme, canvas grid styles & design tokens
+│   ├── layout.tsx          # Root layout with dark theme & zero-FOUC script
+│   └── page.tsx            # Main application mounting EnergyStudioCanvas
+├── components/
+│   ├── atoms/              # Status badges, GIS coordinate inputs, layer toggles, sliders
+│   ├── molecules/          # KPI cards, equipment selectors, navigation toolbars
+│   ├── organisms/          # Top navigation bar, telemetry sidebar, CAD/BIM modals
+│   └── workstation/        # EnergyStudioCanvas core interactive SVG viewport
+├── hooks/
+│   └── useEquipmentPlacement.ts  # Magnetic snap, 400mm grid, obstacle collisions
+├── tokens/
+│   └── tokens.json         # Standard W3C Design Tokens Community Group specification
+└── types/
+    └── energy.ts           # Domain models, telemetry interfaces & API data contracts
+```
